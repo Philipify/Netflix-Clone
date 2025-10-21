@@ -1,3 +1,5 @@
+import SearchBar from "./SearchBar";
+
 const Header = () => {
     return (
         <header className="absolute top-0 left-0 right-0 z-100 py-5 ">
@@ -5,6 +7,7 @@ const Header = () => {
                 <div className="flex-shrink-0">
                     <h1 className="text-xl lg:text-4xl font-bold text-red-600">REACTFLIX</h1>
                 </div>
+                <SearchBar />
             </div>
         </header>
     )
