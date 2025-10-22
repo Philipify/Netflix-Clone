@@ -10,11 +10,13 @@ export default function SearchBar() {
       {
         showSearch &&
         <input 
+        onBlur={() => setShowSearch(false)}
         type="text" 
         placeholder="Search..." 
         className="px-4 py-2 rounded-md border border-1 border-gray-300 focus:outline-none focus:ring-2 focus:ring-red-600" />
       }
-        <button onClick={() => setShowSearch(!showSearch)} className="cursor-pointer">
+        <button 
+          onClick={() => setShowSearch(true)} className="cursor-pointer">
           <Search />
         </button>
     </div>
