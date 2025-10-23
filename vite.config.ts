@@ -1,14 +1,25 @@
-import path from "path"
 import { defineConfig } from 'vite'
-import react from '@vitejs/plugin-react'
+import viteReact from '@vitejs/plugin-react'
 import tailwindcss from '@tailwindcss/vite'
 
-// https://vite.dev/config/
+import { tanstackRouter } from '@tanstack/router-plugin/vite'
+import { fileURLToPath, URL } from 'node:url'
+import { nitroV2Plugin } from '@tanstack/nitro-v2-vite-plugin'
+
+// https://vitejs.dev/config/
 export default defineConfig({
-   plugins: [react(), tailwindcss()],
+  plugins: [
+    nitroV2Plugin(),
+    tanstackRouter({
+      target: 'react',
+      autoCodeSplitting: true,
+    }),
+    viteReact(),
+    tailwindcss(),
+  ],
   resolve: {
     alias: {
-      "@": path.resolve(__dirname, "./src"),
+      '@': fileURLToPath(new URL('./src', import.meta.url)),
     },
   },
 })

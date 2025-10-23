@@ -16,9 +16,22 @@ export const useSearchStore = create<SearchState>((set) => ({
     setQuery: (q: string) => set({ query: q }),
     setResults: (r: Movie[]) => set({ results: r }),
     performSearch: (q: string) => {
+        set({ query: q });
+        const qTrim = q.trim();
+
+        if (qTrim === '') {
+            set({ results: [] });
+            return;
+        }
+        
         const results = MOVIE_DATA.results.filter((movie: Movie) =>
             movie.name.toLowerCase().includes(q.toLowerCase())
-        );
-        set({ query: q, results });
+        ) as Movie[]
+
+        set({ results })
+
+        console.log('Search results:', results);    
     }   
 }))
+
+export default useSearchStore;
