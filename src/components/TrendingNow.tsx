@@ -2,6 +2,12 @@ import MovieList from "./MovieList";
 import MOVIE_DATA from "../data/mockdata.json"
 
 const TrendingNow = () => {
+
+    
+
+
+
+
     return (
         <div className="px-6 mt-6">
             <h3 className="text-2xl">Trending Now</h3>

@@ -1,7 +1,6 @@
 import { Search } from "lucide-react";
 import { useState } from "react";
-import type { Movie } from "../types";
-import MOVIE_DATA from "../data/mockdata.json"
+import { useNavigate } from "@tanstack/react-router";
 import useSearchStore from "../store/searchStore";
 import useDebounce from 'react-debounced';
 
@@ -9,10 +8,16 @@ export default function SearchBar() {
 
   const [showSearch, setShowSearch] = useState(false);
   const performSearch= useSearchStore((state) => state.performSearch);
+  const navigate = useNavigate();
+
   const debounce = useDebounce(500);
 
   const searchFor = async (query: string) => {
     performSearch(query);
+    // Navigate to search route when there's a query
+    if (query.trim()) {
+      navigate({ to: '/search', search: { movie: query } });
+    }
   }
 
   const handleSearch = (e: React.ChangeEvent<HTMLInputElement>) => {

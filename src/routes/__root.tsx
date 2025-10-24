@@ -1,7 +1,6 @@
 import { Outlet, createRootRoute } from '@tanstack/react-router'
 import { TanStackRouterDevtoolsPanel } from '@tanstack/react-router-devtools'
 import { TanStackDevtools } from '@tanstack/react-devtools'
-
 import Header from '../components/Header'
 
 export const Route = createRootRoute({
@@ -11,7 +10,7 @@ export const Route = createRootRoute({
       <Outlet />
       <TanStackDevtools
         config={{
-          position: 'bottom-right',
+          position: 'bottom-left',
         }}
         plugins={[
           {
